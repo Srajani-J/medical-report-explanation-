@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CureCheck – Understand your medical documents</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="w">
+<header><span class="logo">Cure<span>Check</span></span><button class="chip" id="big" aria-pressed="false">Larger text</button></header>
+<div class="hero">
+<h1>Understand your medical documents before you leave the clinic.</h1>
+<p>Lab reports, discharge summaries and prescriptions are full of jargon, and a consultation lasts only a few minutes. CureCheck explains them in your language, reads them aloud and reminds you what to do next.</p>
+<div class="facts"><div><b>Fewer missed doses</b>Medicine reminders from your confirmed prescription.</div><div><b>Less needless panic</b>Each value shown against the range printed on your report.</div><div><b>Faster follow-up</b>Doctor questions and appointment reminders.</div></div>
+</div>
+
+<div class="tabs" role="tablist">
+<button class="tab" role="tab" aria-selected="true" data-t="a">Understand a document</button>
+<button class="tab" role="tab" aria-selected="false" data-t="r">Reminders</button>
+<button class="tab" role="tab" aria-selected="false" data-t="h">History</button>
+<button class="tab" role="tab" aria-selected="false" data-t="f">Family access</button>
+</div>
+
+<main>
+<section id="a">
+<label class="drop"><input type="file" id="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"><b>Choose a medical file</b><br><span class="src">PDF, JPG or PNG. Lab reports, prescriptions and discharge summaries only.</span></label>
+<p class="msg" id="msg" role="status">Or try a sample:</p>
+<div class="ctl"><button class="btn g s" data-s="lab">Sample lab report</button><button class="btn g s" data-s="rx">Sample prescription</button><button class="btn g s" data-s="dis">Sample discharge summary</button></div>
+<div id="result"></div>
+</section>
+
+<section id="r" hidden>
+<div class="grid">
+<div class="panel"><h2>Medicine</h2><form class="f" id="fm"><input type="text" id="mn" placeholder="Medicine name" aria-label="Medicine name" required><input type="time" id="mt" value="08:00" aria-label="Time" style="max-width:130px" required><button class="btn s">Add</button></form>
+<h2 style="margin-top:14px">Doctor appointment</h2><form class="f" id="fa"><input type="text" id="an" placeholder="Doctor or clinic" aria-label="Doctor or clinic" required><input type="datetime-local" id="at" aria-label="Appointment date and time" required><button class="btn s">Add</button></form>
+<p class="src">Appointment reminders appear 1 hour before. Pop-ups show while this page is open.</p>
+<button class="btn g s" id="demo">Preview a pop-up</button></div>
+<div class="panel"><h2>Your reminders</h2><ul class="l" id="rl"></ul></div>
+</div>
+</section>
+
+<section id="h" hidden><div class="panel"><h2>Medical history</h2><p class="src">Saved documents appear here, newest first.</p><ul class="l" id="hl"></ul></div></section>
+
+<section id="f" hidden><div class="grid">
+<div class="panel"><h2>Trusted family and caregivers</h2><p class="src" style="margin-top:0">Access is opt-in, limited to the role you choose, and can be revoked at any time.</p>
+<form class="f" id="ff"><input type="text" id="fn" placeholder="Name" aria-label="Name" required><select id="fr" aria-label="Role"><option>View documents</option><option>View documents and reminders</option></select><button class="btn s">Invite</button></form>
+<ul class="l" id="fl"></ul></div>
+<div class="panel"><h2>Activity log</h2><ul class="l" id="al"></ul></div>
+</div></section>
+</main>
+<footer>CureCheck is an educational and organisational aid. It does not diagnose, prescribe or replace your doctor. “Within range” doesn’t guarantee good health, and “high” or “low” isn’t a diagnosis. If symptoms are severe or getting worse, seek urgent medical help. This demo uses sample data and stores nothing.</footer>
+</div>
+
+<div id="pop" hidden><div role="alertdialog" aria-modal="true" aria-labelledby="pt"><h3 id="pt"></h3><p id="pp"></p><div style="all:unset;display:flex;gap:8px;flex-wrap:wrap"><button class="btn s" id="p1"></button><button class="btn g s" id="p2">Snooze 10 min</button><button class="btn g s" id="p3">Dismiss</button></div></div></div>
+
+<script src="script.js"></script>
+</body>
+</html>
